@@ -4,7 +4,7 @@ process BRACKEN {
 
   if (params.output_dir != "") { publishDir(params.output_dir, mode:'copy') }
 
-  conda "./bracken_env.yml"
+  conda "../bracken_env.yml"
 
   input:
   tuple val(sample_id), path(kraken_report)
