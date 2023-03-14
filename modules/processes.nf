@@ -4,7 +4,8 @@ process BRACKEN {
 
   if (params.output_dir != "") { publishDir(params.output_dir, mode:'copy') }
 
-  conda "../bracken_env.yml"
+  conda "/MIGE/01_DATA/07_TOOLS_AND_SOFTWARE/nextflow_pipelines/bracken/bracken_env.yml"
+  // if used outside the TAPIR server, simply use conda '../bracken_env.yml'
 
   input:
   tuple val(sample_id), path(kraken_report)
