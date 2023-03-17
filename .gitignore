@@ -1,3 +1,4 @@
 test*
 work
 *.nextflow*
+.default_output
