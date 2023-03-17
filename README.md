@@ -11,7 +11,7 @@
 
         Mandatory arguments:
          --database                     KRAKEN database directory (full path required, e.g., "/KRAKEN_DB")
-         --output_dir                   Output directory to place final combined kraken output (e.g., "/MIGE/01_DATA/03_ASSEMBLY")
+         --output_dir                   Output directory to place final combined kraken output (e.g., "/MIGE/01_DATA/11_QC_REPORTS")
          --sequencing_date              Sequencing Date (for TAPIR, must start with G e.g., "G230223")
          --kraken_report                kraken report file generated from kraken analysis
 
