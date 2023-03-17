@@ -10,14 +10,13 @@
         nextflow run main.nf --reads "PathToReadFile(s)" --output_dir "PathToOutputDir" --database "PathToDB" --sequencing_date "GYYMMDD" --taxon "taxon_symbol" --kraken_report "*.kraken.report.txt"
 
         Mandatory arguments:
-         --reads                        Query fastqz file of sequences you wish to supply as input (e.g., "/MIGE/01_DATA/01_FASTQ/T055-8-*.fastq.gz")
          --database                     KRAKEN database directory (full path required, e.g., "/KRAKEN_DB")
          --output_dir                   Output directory to place final combined kraken output (e.g., "/MIGE/01_DATA/03_ASSEMBLY")
          --sequencing_date              Sequencing Date (for TAPIR, must start with G e.g., "G230223")
          --kraken_report                kraken report file generated from kraken analysis
 
         Optional arguments:
-         --taxon                        taxonomic rank symbol (e.g., "D", "P", "C", "O", "F", "G", "S", "S1", Default: "S")
+         --taxon                        taxonomic rank symbol (e.g., "D", "P", "C", "O", "F", "G", "G1", "S", "S1", Default: "S")
          --help                         This usage statement.
          --version                      Version statement
 
@@ -32,7 +31,7 @@ This pipeline estimates microbial abundance at any taxonomic level derived from 
 An example of a command to run this pipeline is:
 
 ```
-nextflow run main.nf --reads "Sample_files/*.fastq.gz" --output_dir "test2" --database "/KRAKEN_DB" --sequencing_date "G230202" --taxon "S" --kraken_report "test2/*.kraken.report.txt"
+nextflow run main.nf  --output_dir "test2" --database "/KRAKEN_DB" --sequencing_date "G230202" --taxon "S" --kraken_report "test2/*.kraken.report.txt"
 ```
 
 ## Word of Note
