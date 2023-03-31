@@ -89,7 +89,7 @@ process COMBINE_BRACKEN_KRAKEN_REPORT_FROM_TAXA {
     if [[ \$index -eq 0 ]]; then
       echo "samplename\t\$(head -1 \${BRACKEN_KRAKEN_TAXON_REPORT_FILE})" >> combined_bracken_kraken_report_${taxon}_${date}.txt
     fi
-    awk -F '\\t' 'FNR>=2 { print FILENAME, \$0 }' \${BRACKEN_KRAKEN_TAXON_REPORT_FILE} |  sed 's/\\.${taxon}\\.bracken\\.kraken\\.txt//g' >> combined_bracken_kraken_report_${taxon}_${date}.txt
+    awk -v OFS='\\t' 'FNR>=2 { print FILENAME, \$0 }' \${BRACKEN_KRAKEN_TAXON_REPORT_FILE} |  sed 's/\\.${taxon}\\.bracken\\.kraken\\.txt//g' >> combined_bracken_kraken_report_${taxon}_${date}.txt
     done
 
     """
@@ -123,7 +123,7 @@ process COMBINE_BRACKEN_FILES_FROM_TAXA {
     if [[ \$index -eq 0 ]]; then
       echo "Filename\t\$(head -1 \${BRACKEN_TAXON_FILE})" >> combined_bracken_${taxon}_${date}.txt
     fi
-    awk -F '\\t' 'FNR>=2 { print FILENAME, \$0 }' \${BRACKEN_TAXON_FILE} |  sed 's/\\.${taxon}\\_bracken//g' >> combined_bracken_${taxon}_${date}.txt
+    awk -v OFS='\\t' 'FNR>=2 { print FILENAME, \$0 }' \${BRACKEN_TAXON_FILE} |  sed 's/\\.${taxon}\\_bracken//g' >> combined_bracken_${taxon}_${date}.txt
     done
 
 
@@ -138,6 +138,7 @@ process EXTRACT_UNCLASSIFIED_INFO_FROM_BRACKEN_LOG {
 
     input:
     tuple val(sample_id), path(bracken_log_file)
+    val(taxon)
 
     output:
     path("*.bracken.unclassified.log.txt"), emit: bracken_uncl_ch
@@ -148,7 +149,7 @@ process EXTRACT_UNCLASSIFIED_INFO_FROM_BRACKEN_LOG {
 
     echo "Filename\tUnclassifiedReads" > ${sample_id}.bracken.unclassified.log.txt
 
-    FILENAME=\$(cat $bracken_log_file | grep 'BRACKEN OUTPUT PRODUCED' | cut -d':' -f2 | sed 's/\\.S\\_bracken//g')
+    FILENAME=\$(cat $bracken_log_file | grep 'BRACKEN OUTPUT PRODUCED' | cut -d':' -f2 | sed 's/\\.${taxon}\\_bracken//g')
     UNCLASSIFIEDREADS=\$(cat $bracken_log_file | grep 'Unclassified' | cut -d':' -f2)
 
     paste <(printf %s \${FILENAME}) <(printf %s \${UNCLASSIFIEDREADS}) >> ${sample_id}.bracken.unclassified.log.txt

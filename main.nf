@@ -52,7 +52,7 @@ workflow  {
 
           //for extracting unclassified read info from bracken log
 
-          EXTRACT_UNCLASSIFIED_INFO_FROM_BRACKEN_LOG(BRACKEN.out.bracken_log_ch)
+          EXTRACT_UNCLASSIFIED_INFO_FROM_BRACKEN_LOG(BRACKEN.out.bracken_log_ch, final_params.taxon)
 
           collected_unclassified_log_ch = EXTRACT_UNCLASSIFIED_INFO_FROM_BRACKEN_LOG.out.bracken_uncl_ch.collect( sort: {a, b -> a[0].getBaseName() <=> b[0].getBaseName()} )
           COMBINE_UNCLASSIFIED_LOGS(collected_unclassified_log_ch, final_params.sequencing_date)
