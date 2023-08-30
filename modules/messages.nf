@@ -36,7 +36,6 @@ def pipeline_start_message(String version, Map params){
     log.info "                  BRACKEN TAPIR Pipeline version ${version}           "
     log.info "======================================================================"
     log.info "Running version   : ${version}"
-    log.info "Fastq inputs      : ${params.reads}"
     log.info ""
     log.info "-------------------------- Other parameters --------------------------"
     params.sort{ it.key }.each{ k, v ->
