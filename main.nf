@@ -30,7 +30,7 @@ workflow  {
           kraken_ch = channel
                           .fromPath( final_params.kraken_report )
                           .map { file -> tuple(file.simpleName, file) }
-			  .ifEmpty { error "Cannot find any reads matching: ${final_params.reads}" }
+			  .ifEmpty { error "Cannot find any file matching: ${final_params.kraken_report}" }
 
 
           database_ch = channel.fromPath( final_params.database )
