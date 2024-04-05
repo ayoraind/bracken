@@ -7,7 +7,7 @@
  BRACKEN TAPIR Pipeline version 1.0dev
 ===============================================
  The typical command for running the pipeline is as follows:
-        nextflow run main.nf --reads "PathToReadFile(s)" --output_dir "PathToOutputDir" --database "PathToDB" --sequencing_date "GYYMMDD" --taxon "taxon_symbol" --kraken_report "*.kraken.report.txt"
+        nextflow run main.nf --output_dir "PathToOutputDir" --database "PathToDB" --sequencing_date "GYYMMDD" --taxon "taxon_symbol" --kraken_report "*.kraken.report.txt"
 
         Mandatory arguments:
          --database                     KRAKEN database directory (full path required, e.g., "/KRAKEN_DB")
