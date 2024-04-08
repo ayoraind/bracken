@@ -24,7 +24,7 @@
 
 
 ## Introduction
-This pipeline estimates microbial abundance at any taxonomic level derived from kraken report files. This Nextflow pipeline was adapted from the Bracken [github page](https://github.com/jenniferlu717/Bracken), and the NF Core Bracken Module [github page](https://github.com/nf-core/modules/tree/master/modules/nf-core/bracken/bracken).  
+This pipeline estimates microbial abundance at any taxonomic level derived from kraken report files. This Nextflow pipeline was adapted from Bracken's [Github page](https://github.com/jenniferlu717/Bracken), and the NF Core Bracken Module's [Github page](https://github.com/nf-core/modules/tree/master/modules/nf-core/bracken/bracken).  
 
 
 ## Sample command
