@@ -1,8 +1,9 @@
 process BRACKEN {
 
-  tag { "abundance estimation in ${sample_id}" }
+  tag "abundance estimation in ${sample_id}" 
 
-  if (params.output_dir != "") { publishDir(params.output_dir, mode:'copy') }
+  conda "bracken=2.8"
+  // publishDir "${params.output_dir}", mode:'copy'
 
   input:
   tuple val(sample_id), path(kraken_report)
@@ -63,7 +64,7 @@ process EXTRACT_TAXON_SPECIFIC_INFO {
 }
 
 process COMBINE_BRACKEN_KRAKEN_REPORT_FROM_TAXA {
-    publishDir "${params.output_dir}", mode:'copy'
+    // publishDir "${params.output_dir}", mode:'copy'
     tag "combine bracken.kraken.report.txt for $taxon"
 
 
@@ -97,7 +98,7 @@ process COMBINE_BRACKEN_KRAKEN_REPORT_FROM_TAXA {
 
 
 process COMBINE_BRACKEN_FILES_FROM_TAXA {
-    publishDir "${params.output_dir}", mode:'copy'
+    // publishDir "${params.output_dir}", mode:'copy'
     tag "combine bracken files for $taxon"
 
 
@@ -159,7 +160,7 @@ process EXTRACT_UNCLASSIFIED_INFO_FROM_BRACKEN_LOG {
 
 
 process COMBINE_UNCLASSIFIED_LOGS {
-    publishDir "${params.output_dir}", mode:'copy'
+    //publishDir "${params.output_dir}", mode:'copy'
 
 
     input:
