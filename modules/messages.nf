@@ -2,7 +2,7 @@ def help_message() {
   log.info """
         Usage:
         The typical command for running the pipeline is as follows:
-        nextflow run main.nf --reads "PathToReadFile(s)" --output_dir "PathToOutputDir" --database "PathToDB" --sequencing_date "GYYMMDD" --taxon "taxon_symbol" --kraken_report "*.kraken.report.txt"
+        nextflow run main.nf --reads "PathToReadFile(s)" --output_dir "PathToOutputDir" --database "PathToDB" --sequencing_date "GYYMMDD" --taxon "taxon_symbol" --kraken_report "*.kraken.report.txt -profile conda"
 
         Mandatory arguments:
          --database                	KRAKEN database directory (full path required, e.g., "/KRAKEN_DB")
@@ -51,7 +51,7 @@ def pipeline_start_message(String version, Map params){
 }
 
 
-def complete_message(Map params, nextflow.script.WorkflowMetadata workflow, String version){
+def complete_message(nextflow.script.WorkflowMetadata workflow, String version){
     // Display complete message
     log.info ""
     log.info "Ran the workflow: ${workflow.scriptName} ${version}"
